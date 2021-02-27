@@ -1,4 +1,4 @@
-module github.com/nodestory/secp256k1-go
+module github.com/bitmark-inc/secp256k1-go
 
 go 1.15
 
