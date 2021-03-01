@@ -79,12 +79,12 @@ func Sign(msg []byte, seckey []byte) ([]byte, error) {
 	}
 
 	var (
-		sig     = make([]byte, 71)
+		sig     = make([]byte, 72)
 		sigdata = (*C.uchar)(unsafe.Pointer(&sig[0]))
-		size    = C.size_t(71)
+		size    = C.size_t(72)
 	)
 	C.secp256k1_ecdsa_signature_serialize_der(context, sigdata, &size, &sigstruct)
-	return sig, nil
+	return sig[:size], nil
 }
 
 func VerifySignature(pubkey, msg, signature []byte) bool {
